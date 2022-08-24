@@ -24,7 +24,7 @@ button {
   outline: none;
   border: none;
 }
-/*
+
 .input,
 .passwordInput,
 .emailInput,
@@ -139,6 +139,7 @@ button {
   font-size: 2rem;
   font-weight: 800;
 }
+
 
 .navbar {
   position: fixed;
@@ -819,4 +820,4 @@ button {
   margin-left: 1rem;
   font-size: 0.8rem;
   opacity: 0.75;
-}*/
+}
