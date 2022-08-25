@@ -3,14 +3,15 @@ import {Link, useNavigate } from 'react-router-dom';
 import { ReactComponent as ArrowIcon} from '../assets/svg/keyboardArrowRightIcon.svg';
 import visibilityIcon from '../assets/svg/visibilityIcon.svg';
 
-function Profile() {
+const Register = () => {
 
     const [showPassword, setShowPassword] = useState(false);
     const [formData, setFormData] = useState({
+        name: '',
         email: '',
         password: '',
     })
-    const {email, password} = formData;
+    const { name, email, password} = formData;
     const navigate = useNavigate();
 
     const onChange = (e) => {
@@ -25,11 +26,12 @@ function Profile() {
             <div className="pageContainer">
                 <header>
                     <p className="pageHeader">
-                        Welcome back
+                        Register Account
                     </p>
                 </header>
                 <main>
                     <form>
+                    <input type="text" className="nameInput" id="name" placeholder="User Name" value={name} onChange={onChange}/>
                         <input type="email" className="emailInput" id="email" placeholder="Email" value={email} onChange={onChange}/>
                         <div className="passwordInputDiv">
                         <input type={showPassword ? 'text' : 'password'} className="passwordInput" id="password" placeholder="Password" value={password} onChange={onChange}/>
@@ -38,14 +40,14 @@ function Profile() {
 
                         <Link to='/forgot-password'className="forgotPasswordLink">Forgot Password</Link>
 
-                        <div className="signInBar">
-                            <p className="signInText">Sign in</p>
-                            <button className="signInButton"><ArrowIcon fill='#ffffff' width='34px' height='34px' /></button>
+                        <div className="signUpBar">
+                            <p className="signUpText">Sign Up</p>
+                            <button className="signUpButton"><ArrowIcon fill='#ffffff' /></button>
                         </div>
 
                         {/* google */}
 
-                        <Link to="/register" className="registerLink">sign Up instead</Link>
+                        <Link to="/profile" className="registerLink">sign In instead</Link>
                         </form>
                 </main>
             </div>
@@ -55,4 +57,4 @@ function Profile() {
     
 }
 
-export default Profile;
+export default Register;
