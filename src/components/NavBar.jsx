@@ -28,9 +28,9 @@ function NavBar() {
                         <OfferIcon fill={pathMatchRoute('/offers') ? '#2c2c22c' : '#8f8f8f'} width="36px" height="36px"/>
                         <p className={ pathMatchRoute('/offers') ? 'navbarListItemNameActive' : 'navbarListItemName'}>Offer</p>
                     </li>
-                    <li className="navbarListItem" onClick={ () => navigate('/profile')}>
-                        <ProfileIcon fill={pathMatchRoute('/profile') ? '#2c2c22c' : '#8f8f8f'} width="36px" height="36px"/>
-                        <p className={ pathMatchRoute('/profile') ? 'navbarListItemNameActive' : 'navbarListItemName'}>Profile</p>
+                    <li className="navbarListItem" onClick={ () => navigate('/userProfile')}>
+                        <ProfileIcon fill={pathMatchRoute('/userProfile') ? '#2c2c22c' : '#8f8f8f'} width="36px" height="36px"/>
+                        <p className={ pathMatchRoute('/userProfile') ? 'navbarListItemNameActive' : 'navbarListItemName'}>Profile</p>
                     </li>
                 </ul>
             </nav>

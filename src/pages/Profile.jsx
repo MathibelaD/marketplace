@@ -1,7 +1,11 @@
 import React, { useState } from "react";
+import { toast } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
+import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import {Link, useNavigate } from 'react-router-dom';
 import { ReactComponent as ArrowIcon} from '../assets/svg/keyboardArrowRightIcon.svg';
 import visibilityIcon from '../assets/svg/visibilityIcon.svg';
+import { async } from "@firebase/util";
 
 function Profile() {
 
@@ -19,6 +23,21 @@ function Profile() {
             [e.target.id] : e.target.value
         }))
     }
+    const onSubmit = async (e) => {
+        e.preventDefault();
+
+        try {
+        const auth = getAuth();
+        const userCredentials = await signInWithEmailAndPassword(auth, email, password);
+        if(userCredentials.user)
+        {
+            navigate('/');
+        }
+        } catch (error) {
+            toast.error("User not found");
+        }
+        
+    }
 
     return(
         <>
@@ -29,7 +48,7 @@ function Profile() {
                     </p>
                 </header>
                 <main>
-                    <form>
+                    <form onSubmit={onSubmit}>
                         <input type="email" className="emailInput" id="email" placeholder="Email" value={email} onChange={onChange}/>
                         <div className="passwordInputDiv">
                         <input type={showPassword ? 'text' : 'password'} className="passwordInput" id="password" placeholder="Password" value={password} onChange={onChange}/>
