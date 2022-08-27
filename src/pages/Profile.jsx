@@ -6,6 +6,7 @@ import {Link, useNavigate } from 'react-router-dom';
 import { ReactComponent as ArrowIcon} from '../assets/svg/keyboardArrowRightIcon.svg';
 import visibilityIcon from '../assets/svg/visibilityIcon.svg';
 import { async } from "@firebase/util";
+import OAuth from "../components/OAuth";
 
 function Profile() {
 
@@ -62,7 +63,7 @@ function Profile() {
                             <button className="signInButton"><ArrowIcon fill='#ffffff' width='34px' height='34px' /></button>
                         </div>
 
-                        {/* google */}
+                        <OAuth />
 
                         <Link to="/register" className="registerLink">sign Up instead</Link>
                         </form>

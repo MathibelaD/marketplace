@@ -5,6 +5,7 @@ import { getAuth, createUserWithEmailAndPassword, updateProfile} from 'firebase/
 import { setDoc, doc, serverTimestamp }  from 'firebase/firestore';
 import { ReactComponent as ArrowIcon} from '../assets/svg/keyboardArrowRightIcon.svg';
 import visibilityIcon from '../assets/svg/visibilityIcon.svg';
+import OAuth from "../components/OAuth";
 
 const Register = () => {
 
@@ -74,7 +75,7 @@ const Register = () => {
                             <button className="signUpButton"><ArrowIcon fill='#ffffff' /></button>
                         </div>
 
-                        {/* google */}
+                        <OAuth />
 
                         <Link to="/profile" className="registerLink">sign In instead</Link>
                         </form>
