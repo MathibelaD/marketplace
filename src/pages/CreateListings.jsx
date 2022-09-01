@@ -62,7 +62,7 @@ function CreateListings (){
        
         if(discountedPrice >= regularPrice){
             setLoading(false)
-            toast.error('discount price cabt be less than regular price')
+            toast.error('discount price cant be more than regular price')
         }
 
         if(images.length > 6){
@@ -118,7 +118,7 @@ function CreateListings (){
             toast.error('Images not uploaded')
             return
         })
-        console.log('logging');
+      
         //========add documents to database
         const formDataCopy = {
             ...formData,
