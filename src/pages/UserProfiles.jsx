@@ -4,6 +4,8 @@ import { doc, updateDoc } from "firebase/firestore";
 import { db } from "../firebase.config";
 import { useNavigate, Link } from "react-router-dom";
 import { toast } from 'react-toastify';
+import ArrowRight from '../assets/svg/keyboardArrowRightIcon.svg';
+import home from '../assets/svg/homeIcon.svg';
 import { async } from "@firebase/util";
 
 const UserProfile = () => {
@@ -65,6 +67,11 @@ const UserProfile = () => {
                          disabled={!changeDetails} value={email} onChange={onChange}/>
                     </form>
                 </div>
+                <Link to='/create-listing' className="createListing">
+                        <img src={home} alt="homeIcon" />
+                        <p>Sell or Rent your home</p>
+                        <img src={ArrowRight} alt="ArrowIcon" />
+                </Link>
             </main>
         </div>
     )

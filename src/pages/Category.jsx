@@ -7,7 +7,7 @@ import { Spinner } from '../components/Spinner';
 import ListItem from '../components/ListItem';
 import { async } from '@firebase/util';
 
-function Offers () {
+function Category () {
 
     const [listings, setListings] = useState(null)
     const [loading, setLoading] = useState(true)
@@ -18,7 +18,7 @@ function Offers () {
         const fetchListings = async () => {
             try {
                 const listingRef = collection(db, 'listings')
-                const q = query(listingRef,where('offer', '==' ,true), orderBy('timestamp','desc'),limit(10));
+                const q = query(listingRef,where('type', '==' , params.categoryName), orderBy('timestamp','desc'),limit(10));
 
                 const querySnap = await getDocs(q);
 
@@ -39,14 +39,14 @@ function Offers () {
             }
         }
         fetchListings();
-    }, [])
+    }, [params.categoryName])
 
 
     return(
         <div className='category'>
             <header>
             <p className="pageHeader">
-                Offers
+                {params.categoryName === 'rent' ? 'Places for rent' : 'Places for sale' }
             </p>
             </header>
             {loading ? (<Spinner />) :  listings && listings.length > 0 ?( <>
@@ -58,9 +58,9 @@ function Offers () {
                 </ul>
             </main>
             </> ) 
-            :( <p>No Offers</p>) }
+            :( <p>No listings for {params.categoryName}</p>) }
         </div>
     )
 }
 
-export default Offers;
+export default Category
