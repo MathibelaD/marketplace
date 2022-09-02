@@ -9,11 +9,13 @@ import Explore from './pages/explore';
 import Offers from './pages/Offers';
 import ForgotPassword from './pages/ForgotPassword';
 import CreateListings from './pages/CreateListings';
+import EditListing from './pages/EditListing';
 import Profile from './pages/Profile';
 import UserProfile from './pages/UserProfiles';
 import Register from './pages/register';
 import Listing from './pages/Listing';
 import Contact from './pages/contact';
+
 
 
 
@@ -31,6 +33,7 @@ function App() {
           <Route path='/profile' element={<Profile />}/>
           <Route path='/forgot-password' element={<ForgotPassword/>}/>
           <Route path='/create-listing' element={<CreateListings />} />
+          <Route path='/edit-listing/:listingId' element={<EditListing />} />
           <Route path='/category/:categoryName/:listingId' element={<Listing />} />
           <Route path='/contact/:landlordId' element={<Contact />} />
           <Route path='/register' element={<Register />} />

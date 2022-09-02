@@ -1,10 +1,12 @@
 import { Link } from "react-router-dom";
-import {ReactComponent as deleteIcon} from '../assets/svg/deleteIcon.svg';
+import {ReactComponent as DeleteIcon} from '../assets/svg/deleteIcon.svg';
+import {ReactComponent as EditIcon} from '../assets/svg/editIcon.svg';
 import bedIcon from '../assets/svg/bedIcon.svg';
 import bathtubIcon from '../assets/svg/bathtubIcon.svg'
 
 
-function ListItem ({listing, id, onDelete}) {
+
+function ListItem ({listing, id, onEdit, onDelete}) {
 
     return(
         <li className="categoryListing">
@@ -38,8 +40,9 @@ function ListItem ({listing, id, onDelete}) {
                     </p>
                 </div>
             </div>
-            {onDelete && <deleteIcon className='removeIcon' onClick={() => onDelete(listing.id, listing.name)}/>}
             </Link>
+            {onDelete && <DeleteIcon className='removeIcon' onClick={() => onDelete(listing.id, listing.name)}/>}
+            {onEdit && <EditIcon className="editIcon" onClick={() => onEdit(id)} /> }
         </li>
     )
 }

@@ -2,16 +2,15 @@ import { useState, useEffect } from "react"
 import { Link, useNavigate, useParams } from "react-router-dom"
 import { MapContainer, Marker, Popup, TileLayer } from "react-leaflet"
 import {Swiper, SwiperSlide} from 'swiper/react'
-import SwiperCore, {Navigation, Pagination, Scrollbar, Ally} from 'swiper'
-import 'swiper/css'
-import 'swiper/css/navigation'
-import 'swiper/css/pagination'
+import SwiperCore, {Navigation, Pagination, Scrollbar, A11y} from 'swiper'
+import 'swiper/swiper-bundle.css'
 import { getDoc,doc } from 'firebase/firestore'
 import { getAuth } from 'firebase/auth'
 import { db } from '../firebase.config'
 import {Spinner} from '../components/Spinner'
 import shareIcon from '../assets/svg/shareIcon.svg'
 import { async } from "@firebase/util"
+SwiperCore.use([Navigation, Pagination, Scrollbar, A11y])
 
 function Listing() {
     const [listing, setListing] = useState(null)
@@ -48,23 +47,25 @@ function Listing() {
         return <Spinner />
     }
 
+    console.log(listing);
+
     return (
         <main>
 
   
-<Swiper slidesPerView={1} pagination={{ clickable: true }}>
-        {listing.imgUrls.map((url, index) => (
-          <SwiperSlide key={index}>
-            <div
-              styles={{
-                background: `url(${listing.imgUrls[index]}) center no-repeat`,
-                backgroundSize: 'cover',
-              }}
-              className='swiperSlideDiv'
-            ></div>
-          </SwiperSlide>
-        ))}
-      </Swiper>
+                <Swiper slidesPerView={1} pagination={{ clickable: true }}>
+                        {listing.imgUrls.map((url, index) => (
+                        <SwiperSlide key={url}>
+                            <div
+                            style={{
+                                background: `url(${listing.imgUrls[index]}) center no-repeat`,
+                                backgroundSize: 'cover',
+                            }}
+                            className='swiperSlideDiv'
+                            ></div>
+                        </SwiperSlide>
+                        ))}
+                    </Swiper>
        
             <div className="shareIconDiv"
             onClick={() => {
@@ -126,8 +127,8 @@ function Listing() {
                 </MapContainer>
             </div>
 
-            {auth.currentUser?.uid !== Listing.useRef && (
-                <Link to={`/contact/${listing.userRef}?listingName=
+            {auth.currentUser?.uid !== listing.useRef && (
+                <Link to={`/contact/${listing.useRef}?listingName=
                 ${listing.name}&listingLocation=${listing.location}`}
                 className='primaryButton'>
                     Contact Landlord
